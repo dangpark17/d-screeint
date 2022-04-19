@@ -4,7 +4,8 @@ namespace App\Http\Controllers;
 
 use App\Models\Dof;
 use Illuminate\Http\Request;
-
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB as FacadesDB;
 class DofController extends Controller
 {
     /**
@@ -13,9 +14,10 @@ class DofController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
-        //
-        return view('cambio.dof');
+    {        
+        $dofs = FacadesDB::table('dofs')                
+        ->get();
+        return view('cambio.dof',compact('dofs'));
     }
 
     /**
