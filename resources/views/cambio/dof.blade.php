@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Dashboard')
+@section('title', 'Diario Oficial de la Federación')
 
 @section('content_header')
     <h1>Diario Oficial de la federación</h1>

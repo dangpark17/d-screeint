@@ -7,7 +7,13 @@
 @stop
 
 @section('content')
-    <p>Welcome to this beautiful admin panel.</p>
+	<div class="container">
+		<div class="col-sm-3">
+			<x-adminlte-info-box title="Views" text="424" icon="fas fa-lg fa-eye text-dark" theme="gradient-teal"/>
+
+		</div>
+	</div>
+	
 @stop
 
 @section('css')

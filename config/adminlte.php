@@ -259,6 +259,7 @@ return [
             'url'  => 'dof',
             'icon' => 'fas fa-fw fa-user',
         ],
+        
         /*
         [
             'text' => 'change_password',
