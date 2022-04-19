@@ -1,7 +1,9 @@
 <?php
 
 use Illuminate\Support\Facades\Route;
-
+use App\Http\Controllers\CambioController;
+use App\Http\Controllers\DofController;
+use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -14,5 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return view('auth.login');
+});
+Route::resource('cambio', CambioController::class)->middleware('auth');
+Route::resource('dof', DofController::class)->middleware('auth');
+Auth::routes();
+
+Route::get('/home', [CambioController::class,'index'])->name('home');
+
+Route::group(['middleware'=>'auth'],function(){
+    Route::get('/', [CambioController::class,'index'])->name('home');    
 });
