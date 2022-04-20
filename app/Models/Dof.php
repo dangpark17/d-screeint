@@ -10,4 +10,8 @@ class Dof extends Model
     use HasFactory;
     protected $table = 'dofs';
     protected $primaryKey = 'id';
+    protected $fillable = [
+        'dia',
+        'valor'
+    ];
 }

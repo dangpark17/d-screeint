@@ -14,20 +14,11 @@ class DofController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {        
-        $dofs = FacadesDB::table('dofs')                
-        ->get();
-        return view('cambio.dof',compact('dofs'));
-    }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
     {
-        //
+        $dofs = FacadesDB::table('dofs')
+        ->get();
+        //return response()->json($dofs);
+        return view('cambio.dof',compact('dofs'));
     }
 
     /**
@@ -48,17 +39,6 @@ class DofController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function show(Dof $dof)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\Models\Dof  $dof
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(Dof $dof)
     {
         //
     }
