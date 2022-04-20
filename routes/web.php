@@ -19,7 +19,7 @@ use Illuminate\Support\Facades\Auth;
 Route::get('/', function () {
     return view('auth.login');
 });
-Route::resource('cambio', CambioController::class)->middleware('auth');
+Route::resource('fixer', CambioController::class)->middleware('auth');
 Route::resource('dof', DofController::class)->middleware('auth');
 Auth::routes();
 

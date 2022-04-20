@@ -14,7 +14,7 @@ class CambioController extends Controller
      */
     public function index()
     {
-        return view('home');
+        return view('cambio.fixer');
     }
     /**
      * Show the form for creating a new resource.

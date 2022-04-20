@@ -259,18 +259,17 @@ return [
             'url'  => 'dof',
             'icon' => 'fas fa-fw fa-user',
         ],
-
+        [
+            'text' => 'change_password',
+            'url'  => 'fixer',
+            'icon' => 'fas fa-fw fa-lock',
+        ],
         [
             'text' => 'level_four',
             'url'  => 'banxico',
             'icon' => 'fas fa-fw fa-lock',
         ],
         /*
-        [
-            'text' => 'change_password',
-            'url'  => 'fixer',
-            'icon' => 'fas fa-fw fa-lock',
-        ],
         [
             'text'    => 'multilevel',
             'icon'    => 'fas fa-fw fa-share',

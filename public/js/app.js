@@ -5369,6 +5369,9 @@ window.Vue = (__webpack_require__(/*! vue */ "./node_modules/vue/dist/vue.esm.js
 Vue.component('Covertidor', function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_ConvertidorComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/ConvertidorComponent */ "./resources/js/components/ConvertidorComponent.vue"));
 });
+Vue.component('Fixer', function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_FixerComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/FixerComponent */ "./resources/js/components/FixerComponent.vue"));
+});
 var app = new Vue({
   el: '#app'
 });
@@ -5393,8 +5396,8 @@ try {
  */
 
 
-window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js");
-window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+window.axios = __webpack_require__(/*! axios */ "./node_modules/axios/index.js"); //window.axios.defaults.headers.common['X-Requested-With'] = 'XMLHttpRequest';
+
 /**
  * Echo exposes an expressive API for subscribing to channels and listening
  * for events that are broadcast by Laravel. Echo and event broadcasting
@@ -39996,7 +39999,7 @@ Vue.compile = compileToFunctions;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if (chunkId === "resources_js_components_ConvertidorComponent_vue") return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ConvertidorComponent_vue":1,"resources_js_components_FixerComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};
