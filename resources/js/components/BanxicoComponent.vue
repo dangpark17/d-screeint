@@ -50,32 +50,42 @@
 </template>
 
 <script>
+
     export default{
             data() {
                 return {
-                    dofs: [],
                     monedas: ['USD','MXN'],
                     cantidad: 0,
                     tengo: 'MXN',
                     quiero: 'USD',
                     total: 0,
-                    dof:{dia: '',valor: ''}
+                    banxicos: {},
+                    banxico: ''
                 }
 
             },
-            created() {
-                axios.get('/dof').then(res=>{
-                    this.dofs = res.data;
-                })
+            mounted () {
+                let token = 'bd10138d23a0a447bb07410c1e3b02754e7a884be1c45e8019bba7775a57e356';
+                axios.get('https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/oportuno', {
+                    params: {
+                        token: token
+                    }
+                }).then(response => {
+                        console.log(response.data.bmx.series[0].datos[0]);
+                        this.banxicos = response.data.bmx.series[0].datos[0]
+                        console.log(banxicos)
+                }).catch(function (error) {
+                        console.log(error);
+                });
 
             },
+            //bac7986d08e377de7e094b1255d8f6a2
             methods: {
-
                 convertirMoneda(){
                     switch (this.tengo) {
                         case 'USD':
                             if(this.quiero == 'MXN'){
-                                this.total =this.cantidad  * 19.9377
+                                this.total =this.cantidad  * this.banxicos.dato
                             }
                             if(this.quiero == 'USD'){
                                 this.total =this.cantidad
@@ -83,7 +93,7 @@
                             break;
                         case 'MXN':
                             if(this.quiero == 'USD'){
-                                this.total =this.cantidad / 19.9377
+                                this.total =this.cantidad / this.banxicos.dato
                             }
                             if(this.quiero == 'MXN'){
                                 this.total =this.cantidad
@@ -105,3 +115,6 @@
         }
 
 </script>
+
+
+

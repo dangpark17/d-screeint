@@ -66,6 +66,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -74,7 +76,7 @@ __webpack_require__.r(__webpack_exports__);
       tengo: 'MXN',
       quiero: 'USD',
       total: 0,
-      informaciones: [],
+      informaciones: {},
       informacion: ''
     };
   },
@@ -93,8 +95,8 @@ __webpack_require__.r(__webpack_exports__);
         symbols: symbols
       }
     }).then(function (response) {
-      console.log(response.data);
       _this.informaciones = response.data;
+      console.log(response.data.error.object);
     })["catch"](function (error) {
       console.log(error);
     });
@@ -116,7 +118,7 @@ __webpack_require__.r(__webpack_exports__);
 
         case 'MXN':
           if (this.quiero == 'USD') {
-            this.total = this.cantidad * 0.050;
+            this.total = this.cantidad / 19.9377;
           }
 
           if (this.quiero == 'MXN') {
@@ -226,13 +228,16 @@ var render = function () {
     "div",
     [
       _vm._l(_vm.informaciones, function (informacion, index) {
-        return _c("ul", { key: index }, [
-          _c("li", [
-            _vm._v(_vm._s(informacion.info) + "\n                    "),
-            _c("br"),
-            _c("br"),
-            _vm._v("\n                     " + _vm._s(informacion.type)),
-          ]),
+        return _c("p", { key: index }, [
+          _vm._v(
+            "\n               Codigo: " +
+              _vm._s(informacion.code) +
+              "\n                    -\n                Info: " +
+              _vm._s(informacion.info) +
+              "\n                    -\n                type: " +
+              _vm._s(informacion.type) +
+              "\n            "
+          ),
         ])
       }),
       _vm._v(" "),

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\CambioController;
 use App\Http\Controllers\DofController;
 use App\Http\Controllers\HomeController;
+use App\Http\Controllers\BanxicoController;
 use Illuminate\Support\Facades\Auth;
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +22,7 @@ Route::get('/', function () {
 });
 Route::resource('fixer', CambioController::class)->middleware('auth');
 Route::resource('dof', DofController::class)->middleware('auth');
+Route::resource('banxico', BanxicoController::class)->middleware('auth');
 Auth::routes();
 
 Route::get('/home', [HomeController::class,'index'])->name('home');

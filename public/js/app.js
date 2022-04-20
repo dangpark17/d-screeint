@@ -5372,6 +5372,9 @@ Vue.component('Covertidor', function () {
 Vue.component('Fixer', function () {
   return __webpack_require__.e(/*! import() */ "resources_js_components_FixerComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/FixerComponent */ "./resources/js/components/FixerComponent.vue"));
 });
+Vue.component('Banxico', function () {
+  return __webpack_require__.e(/*! import() */ "resources_js_components_BanxicoComponent_vue").then(__webpack_require__.bind(__webpack_require__, /*! ./components/BanxicoComponent */ "./resources/js/components/BanxicoComponent.vue"));
+});
 var app = new Vue({
   el: '#app'
 });
@@ -39999,7 +40002,7 @@ Vue.compile = compileToFunctions;
 /******/ 		// This function allow to reference async chunks
 /******/ 		__webpack_require__.u = (chunkId) => {
 /******/ 			// return url for filenames not based on template
-/******/ 			if ({"resources_js_components_ConvertidorComponent_vue":1,"resources_js_components_FixerComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
+/******/ 			if ({"resources_js_components_ConvertidorComponent_vue":1,"resources_js_components_FixerComponent_vue":1,"resources_js_components_BanxicoComponent_vue":1}[chunkId]) return "js/" + chunkId + ".js";
 /******/ 			// return url for filenames based on template
 /******/ 			return undefined;
 /******/ 		};

@@ -1,10 +1,12 @@
 <template>
 <div>
-            <ul  v-for="(informacion, index) in informaciones" v-bind:key="index">
-                <li>{{  informacion.info }}
-                    <br /><br />
-                     {{  informacion.type }}</li>
-            </ul>
+            <p  v-for="(informacion, index) in informaciones" v-bind:key="index">
+               Codigo: {{  informacion.code }}
+                    -
+                Info: {{  informacion.info }}
+                    -
+                type: {{  informacion.type }}
+            </p>
     <div class="container">
         <div class="col-md-12">
             <div class="form-group">
@@ -63,7 +65,7 @@
                     tengo: 'MXN',
                     quiero: 'USD',
                     total: 0,
-                    informaciones: [],
+                    informaciones: {},
                     informacion: '',
                 }
 
@@ -81,11 +83,12 @@
                         symbols: symbols
                     }
                 }).then(response => {
-                    console.log(response.data);
+
                     this.informaciones = response.data
+                    console.log(response.data.error.object);
                 }).catch(function (error) {
                         console.log(error);
-                    })
+                })
 
             },
             //bac7986d08e377de7e094b1255d8f6a2
@@ -102,7 +105,7 @@
                             break;
                         case 'MXN':
                             if(this.quiero == 'USD'){
-                                this.total =this.cantidad * 0.050
+                                this.total =this.cantidad /19.9377
                             }
                             if(this.quiero == 'MXN'){
                                 this.total =this.cantidad

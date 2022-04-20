@@ -1,10 +1,10 @@
 "use strict";
-(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_ConvertidorComponent_vue"],{
+(self["webpackChunk"] = self["webpackChunk"] || []).push([["resources_js_components_BanxicoComponent_vue"],{
 
-/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js&":
-/*!***************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js& ***!
-  \***************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js&":
+/*!***********************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js& ***!
+  \***********************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
@@ -65,31 +65,38 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
-      dofs: [],
       monedas: ['USD', 'MXN'],
       cantidad: 0,
       tengo: 'MXN',
       quiero: 'USD',
       total: 0,
-      dof: {
-        dia: '',
-        valor: ''
-      }
+      banxicos: {},
+      banxico: ''
     };
   },
-  created: function created() {
+  mounted: function mounted() {
     var _this = this;
 
-    axios.get('/dof').then(function (res) {
-      _this.dofs = res.data;
+    var token = 'bd10138d23a0a447bb07410c1e3b02754e7a884be1c45e8019bba7775a57e356';
+    axios.get('https://www.banxico.org.mx/SieAPIRest/service/v1/series/SF43718/datos/oportuno', {
+      params: {
+        token: token
+      }
+    }).then(function (response) {
+      console.log(response.data.bmx.series[0].datos[0]);
+      _this.banxicos = response.data.bmx.series[0].datos[0];
+      console.log(banxicos);
+    })["catch"](function (error) {
+      console.log(error);
     });
   },
+  //bac7986d08e377de7e094b1255d8f6a2
   methods: {
     convertirMoneda: function convertirMoneda() {
       switch (this.tengo) {
         case 'USD':
           if (this.quiero == 'MXN') {
-            this.total = this.cantidad * 19.9377;
+            this.total = this.cantidad * this.banxicos.dato;
           }
 
           if (this.quiero == 'USD') {
@@ -100,7 +107,7 @@ __webpack_require__.r(__webpack_exports__);
 
         case 'MXN':
           if (this.quiero == 'USD') {
-            this.total = this.cantidad / 19.9377;
+            this.total = this.cantidad / this.banxicos.dato;
           }
 
           if (this.quiero == 'MXN') {
@@ -122,18 +129,18 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
-/***/ "./resources/js/components/ConvertidorComponent.vue":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/ConvertidorComponent.vue ***!
-  \**********************************************************/
+/***/ "./resources/js/components/BanxicoComponent.vue":
+/*!******************************************************!*\
+  !*** ./resources/js/components/BanxicoComponent.vue ***!
+  \******************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ConvertidorComponent.vue?vue&type=template&id=12742a77& */ "./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77&");
-/* harmony import */ var _ConvertidorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ConvertidorComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js&");
+/* harmony import */ var _BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./BanxicoComponent.vue?vue&type=template&id=2bd61ec8& */ "./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8&");
+/* harmony import */ var _BanxicoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./BanxicoComponent.vue?vue&type=script&lang=js& */ "./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js&");
 /* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! !../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
 
 
@@ -143,9 +150,9 @@ __webpack_require__.r(__webpack_exports__);
 /* normalize component */
 ;
 var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
-  _ConvertidorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
-  _ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__.render,
-  _ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
+  _BanxicoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__.render,
+  _BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns,
   false,
   null,
   null,
@@ -155,46 +162,46 @@ var component = (0,_node_modules_vue_loader_lib_runtime_componentNormalizer_js__
 
 /* hot reload */
 if (false) { var api; }
-component.options.__file = "resources/js/components/ConvertidorComponent.vue"
+component.options.__file = "resources/js/components/BanxicoComponent.vue"
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (component.exports);
 
 /***/ }),
 
-/***/ "./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js&":
-/*!***********************************************************************************!*\
-  !*** ./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js& ***!
-  \***********************************************************************************/
+/***/ "./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js&":
+/*!*******************************************************************************!*\
+  !*** ./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js& ***!
+  \*******************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
 /* harmony export */   "default": () => (__WEBPACK_DEFAULT_EXPORT__)
 /* harmony export */ });
-/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConvertidorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ConvertidorComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=script&lang=js&");
- /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ConvertidorComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BanxicoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BanxicoComponent.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js??clonedRuleSet-5[0].rules[0].use[0]!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=script&lang=js&");
+ /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = (_node_modules_babel_loader_lib_index_js_clonedRuleSet_5_0_rules_0_use_0_node_modules_vue_loader_lib_index_js_vue_loader_options_BanxicoComponent_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
 
 /***/ }),
 
-/***/ "./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77&":
-/*!*****************************************************************************************!*\
-  !*** ./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77& ***!
-  \*****************************************************************************************/
+/***/ "./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8&":
+/*!*************************************************************************************!*\
+  !*** ./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8& ***!
+  \*************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
 /* harmony export */ __webpack_require__.d(__webpack_exports__, {
-/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__.render),
-/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
+/* harmony export */   "render": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__.render),
+/* harmony export */   "staticRenderFns": () => (/* reexport safe */ _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__.staticRenderFns)
 /* harmony export */ });
-/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ConvertidorComponent_vue_vue_type_template_id_12742a77___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./ConvertidorComponent.vue?vue&type=template&id=12742a77& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77&");
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_BanxicoComponent_vue_vue_type_template_id_2bd61ec8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../node_modules/vue-loader/lib/index.js??vue-loader-options!./BanxicoComponent.vue?vue&type=template&id=2bd61ec8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8&");
 
 
 /***/ }),
 
-/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77&":
-/*!********************************************************************************************************************************************************************************************************************************!*\
-  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/ConvertidorComponent.vue?vue&type=template&id=12742a77& ***!
-  \********************************************************************************************************************************************************************************************************************************/
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8&":
+/*!****************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib/index.js??vue-loader-options!./resources/js/components/BanxicoComponent.vue?vue&type=template&id=2bd61ec8& ***!
+  \****************************************************************************************************************************************************************************************************************************/
 /***/ ((__unused_webpack_module, __webpack_exports__, __webpack_require__) => {
 
 __webpack_require__.r(__webpack_exports__);
