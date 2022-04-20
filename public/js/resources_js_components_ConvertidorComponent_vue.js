@@ -60,6 +60,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ const __WEBPACK_DEFAULT_EXPORT__ = ({
   data: function data() {
     return {
@@ -86,33 +88,34 @@ __webpack_require__.r(__webpack_exports__);
     convertirMoneda: function convertirMoneda() {
       switch (this.tengo) {
         case 'USD':
-          if (this.quiero == 'USD') {
-            this.total = this.cantidad;
-          }
-
           if (this.quiero == 'MXN') {
             this.total = this.cantidad * 19.9377;
+          }
+
+          if (this.quiero == 'USD') {
+            this.total = this.cantidad;
           }
 
           break;
 
         case 'MXN':
-          if (this.quiero == 'MXN') {
-            this.total = this.cantidad;
+          if (this.quiero == 'USD') {
+            this.total = this.cantidad * 0.050;
           }
 
-          if (this.quiero == 'USD') {
-            this.total = this.cantidad / 19.9377;
+          if (this.quiero == 'MXN') {
+            this.total = this.cantidad;
           }
 
           break;
 
         default:
+          this.total = this.cantidad;
           break;
       }
     },
     getTotal: function getTotal(valor) {
-      return valor.toFixed(2);
+      return valor;
     }
   }
 });
@@ -278,10 +281,16 @@ var render = function () {
                   ],
                 },
               },
-              _vm._l(_vm.monedas, function (moneda, index) {
-                return _c("option", { key: index }, [_vm._v(_vm._s(moneda))])
-              }),
-              0
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Selecciona Tipo de Cambio"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.monedas, function (moneda, index) {
+                  return _c("option", { key: index }, [_vm._v(_vm._s(moneda))])
+                }),
+              ],
+              2
             ),
           ]),
         ]),
@@ -322,10 +331,16 @@ var render = function () {
                   ],
                 },
               },
-              _vm._l(_vm.monedas, function (moneda, index) {
-                return _c("option", { key: index }, [_vm._v(_vm._s(moneda))])
-              }),
-              0
+              [
+                _c("option", { attrs: { value: "" } }, [
+                  _vm._v("Selecciona Tipo de Cambio"),
+                ]),
+                _vm._v(" "),
+                _vm._l(_vm.monedas, function (moneda, index) {
+                  return _c("option", { key: index }, [_vm._v(_vm._s(moneda))])
+                }),
+              ],
+              2
             ),
           ]),
         ]),

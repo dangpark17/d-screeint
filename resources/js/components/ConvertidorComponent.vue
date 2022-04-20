@@ -20,6 +20,7 @@
                     <select class="form-control form-control-lg" id="tengo"
                         v-model="tengo"
                         v-on:change="convertirMoneda">
+                        <option value="">Selecciona Tipo de Cambio</option>
                         <option v-for="(moneda, index) in monedas" v-bind:key="index">{{ moneda }}</option>
                     </select>
                 </div>
@@ -30,6 +31,7 @@
                     <select class="form-control form-control-lg" id="quiero"
                         v-model="quiero"
                         v-on:change="convertirMoneda">
+                        <option value="">Selecciona Tipo de Cambio</option>
                         <option v-for="(moneda, index) in monedas" v-bind:key="index">{{ moneda }}</option>
                     </select>
                 </div>
@@ -72,31 +74,31 @@
                 convertirMoneda(){
                     switch (this.tengo) {
                         case 'USD':
+                            if(this.quiero == 'MXN'){
+                                this.total =this.cantidad  * 19.9377
+                            }
                             if(this.quiero == 'USD'){
                                 this.total =this.cantidad
-                            }
-                            if(this.quiero == 'MXN'){
-                                this.total =this.cantidad * 19.9377
                             }
                             break;
                         case 'MXN':
+                            if(this.quiero == 'USD'){
+                                this.total =this.cantidad * 0.050
+                            }
                             if(this.quiero == 'MXN'){
                                 this.total =this.cantidad
-                            }
-                            if(this.quiero == 'USD'){
-                                this.total =this.cantidad / 19.9377
                             }
                             break;
 
                         default:
+                            this.total =this.cantidad
                             break;
                     }
                 },
                 getTotal(valor){
-                    return valor.toFixed(2);
+                    return valor;
 
               },
-
 
             }
 
